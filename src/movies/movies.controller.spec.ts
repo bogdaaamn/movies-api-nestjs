@@ -17,21 +17,24 @@ describe('MoviesController', () => {
   });
 
   describe('GET /movie/:id', () => {
-    // it should return status 200
-    it('should return status 200', () => {
-      expect(controller.getHello()).toBe('Hello World!');
+    it('should return a movie object', () => {
+      expect(typeof controller.getMovieById(123)).toBe('object');
     });
-    // it should return a movie object
-    // it should return the matching id
+
+    it('should return the matching id', () => {
+      expect(controller.getMovieById(123).id).toBe(123);
+    });
+
     // it should return *the* movie structure
+    // it should return status 200
     // it should return 404
   });
 
   describe('/search route', () => {
-    // it should return status 200
     // it should return a search result object
     // is should contain movies
     // it should return the results structure
+    // it should return status 200
     // it should return 404
   });
 });
