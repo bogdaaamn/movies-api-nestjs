@@ -1,8 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { lastValueFrom } from 'rxjs';
-import { Movie } from './movie.interface';
-import { TmdbService } from './tmdb/tmdb.service';
-import { TmdbMovie } from './tmdb/tmdbMovie.interface';
+import { Movie } from './movies.interface';
+import { TmdbService } from '../tmdb/tmdb.service';
+import { TmdbMovie } from '../tmdb/tmdb.interface';
 
 @Injectable()
 export class MoviesService {

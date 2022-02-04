@@ -1,7 +1,7 @@
 import { HttpService } from '@nestjs/axios';
 import { Injectable } from '@nestjs/common';
 import { map, Observable } from 'rxjs';
-import { TmdbMovie } from './tmdbMovie.interface';
+import { TmdbMovie } from './tmdb.interface';
 
 @Injectable()
 export class TmdbService {

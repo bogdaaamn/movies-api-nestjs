@@ -1,5 +1,5 @@
 import { Controller, Get, Param } from '@nestjs/common';
-import { Movie } from './movie.interface';
+import { Movie } from './movies.interface';
 import { MoviesService } from './movies.service';
 
 @Controller('movies')
