@@ -7,8 +7,8 @@ export class MoviesController {
   constructor(private moviesService: MoviesService) {}
 
   @Get(':id')
-  getMovieById(@Param('id') id: number): Movie {
+  async getMovieById(@Param('id') id: number): Promise<Movie> {
     // console.log(typeof id);
-    return this.moviesService.getMovieById(id);
+    return await this.moviesService.getMovieById(id);
   }
 }
