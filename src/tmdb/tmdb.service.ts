@@ -1,7 +1,7 @@
 import { HttpService } from '@nestjs/axios';
 import { HttpException, Injectable } from '@nestjs/common';
 import { catchError, map, Observable } from 'rxjs';
-import { TmdbMovie, TmdbVideos } from './tmdb.interface';
+import { TmdbMovie, TmdbSearchResult, TmdbVideos } from './tmdb.interface';
 
 @Injectable()
 export class TmdbService {
@@ -16,8 +16,8 @@ export class TmdbService {
       })
       .pipe(
         map((response) => response.data),
-        catchError((e) => {
-          throw new HttpException(e.response.data, e.response.status);
+        catchError((error) => {
+          throw new HttpException(error.response.data, error.response.status);
         }),
       );
   }
@@ -31,8 +31,25 @@ export class TmdbService {
       })
       .pipe(
         map((response) => response.data),
-        catchError((e) => {
-          throw new HttpException(e.response.data, e.response.status);
+        catchError((error) => {
+          throw new HttpException(error.response.data, error.response.status);
+        }),
+      );
+  }
+
+  getSearchResult(query: string, page?: number): Observable<TmdbSearchResult> {
+    return this.httpService
+      .get(`${process.env.TMDB_URL}/search/movie`, {
+        params: {
+          api_key: process.env.TMDB_KEY,
+          query: query,
+          page: page || 1,
+        },
+      })
+      .pipe(
+        map((response) => response.data),
+        catchError((error) => {
+          throw new HttpException(error.response.data, error.response.status);
         }),
       );
   }
