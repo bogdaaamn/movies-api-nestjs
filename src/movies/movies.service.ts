@@ -2,25 +2,53 @@ import { Injectable } from '@nestjs/common';
 import { lastValueFrom } from 'rxjs';
 import { Movie } from './movies.interface';
 import { TmdbService } from '../tmdb/tmdb.service';
-import { TmdbMovie } from '../tmdb/tmdb.interface';
+import { TmdbMovie, TmdbVideos } from '../tmdb/tmdb.interface';
 
 @Injectable()
 export class MoviesService {
   constructor(private tmdbService: TmdbService) {}
 
   async getMovieById(id: number): Promise<Movie> {
-    const tmdbResponse: TmdbMovie = await lastValueFrom(
+    // Get TMDB movie metadata
+    const tmdbMovieResponse: TmdbMovie = await lastValueFrom(
       this.tmdbService.getMovie(id),
     );
 
+    // Get TMDB videos related to the movie
+    const tmdbVideosResponse: TmdbVideos = await lastValueFrom(
+      this.tmdbService.getVideos(id),
+    );
+
+    // Get the best trailer option out of the listed (eg 500, 5004)
+    const optimalTrailer = tmdbVideosResponse.results.find((result) => {
+      return (
+        result.type === 'Trailer' ||
+        result.type === 'Teaser' ||
+        result.type === 'Clip'
+      );
+    });
+
+    // Assemble the trailer URL based on site
+    let trailerUrl: string;
+    if (optimalTrailer) {
+      trailerUrl =
+        optimalTrailer.site === 'YouTube'
+          ? `https://www.youtube.com/watch?v=${optimalTrailer.key}`
+          : `https://vimeo.com/${optimalTrailer.key}`;
+    } else {
+      trailerUrl = null;
+    }
+
+    // Return the computed Movie
     return {
-      id: tmdbResponse.id,
-      title: tmdbResponse.title,
-      tagline: tmdbResponse.tagline,
-      overview: tmdbResponse.overview,
-      poster_path: tmdbResponse.poster_path,
-      release_date: tmdbResponse.release_date,
-      runtime: tmdbResponse.runtime,
+      id: tmdbMovieResponse.id,
+      title: tmdbMovieResponse.title,
+      tagline: tmdbMovieResponse.tagline,
+      overview: tmdbMovieResponse.overview,
+      poster_path: tmdbMovieResponse.poster_path,
+      release_date: tmdbMovieResponse.release_date,
+      runtime: tmdbMovieResponse.runtime,
+      trailer: trailerUrl,
     };
   }
 }

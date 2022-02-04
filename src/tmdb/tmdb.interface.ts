@@ -48,3 +48,21 @@ export interface TmdbMovie {
   vote_average: number;
   vote_count: number;
 }
+
+interface Video {
+  iso_639_1: string;
+  iso_3166_1: string;
+  name: string;
+  key: string;
+  site: string;
+  size: number;
+  type: string;
+  official: boolean;
+  published_at: Date;
+  id: string;
+}
+
+export interface TmdbVideos {
+  id: number;
+  results: Video[];
+}
