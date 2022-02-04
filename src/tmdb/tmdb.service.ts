@@ -1,6 +1,6 @@
 import { HttpService } from '@nestjs/axios';
-import { Injectable } from '@nestjs/common';
-import { map, Observable } from 'rxjs';
+import { HttpException, Injectable } from '@nestjs/common';
+import { catchError, map, Observable } from 'rxjs';
 import { TmdbMovie } from './tmdb.interface';
 
 @Injectable()
@@ -12,6 +12,11 @@ export class TmdbService {
       .get(
         `${process.env.TMDB_URL}/movie/${id}?api_key=${process.env.TMDB_KEY}`,
       )
-      .pipe(map((response) => response.data));
+      .pipe(
+        map((response) => response.data),
+        catchError((e) => {
+          throw new HttpException(e.response.data, e.response.status);
+        }),
+      );
   }
 }
