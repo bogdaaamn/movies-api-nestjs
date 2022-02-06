@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { lastValueFrom } from 'rxjs';
 import { TmdbService } from '../tmdb/tmdb.service';
-import { SearchResultPage } from './search.interface';
+import { SearchResultPage } from './search.dto';
 
 @Injectable()
 export class SearchService {

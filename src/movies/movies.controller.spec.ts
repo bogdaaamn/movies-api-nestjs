@@ -4,7 +4,7 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { TmdbService } from '../tmdb/tmdb.service';
 import { MoviesController } from './movies.controller';
 import { MoviesService } from './movies.service';
-import { Movie } from './movies.interface';
+import { Movie } from './movies.dto';
 import { CacheModule } from '@nestjs/common';
 
 describe('MoviesController', () => {

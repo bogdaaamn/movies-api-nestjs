@@ -4,7 +4,7 @@ import { ConfigModule } from '@nestjs/config';
 import { Test, TestingModule } from '@nestjs/testing';
 import { TmdbService } from '../tmdb/tmdb.service';
 import { SearchController } from './search.controller';
-import { SearchResultPage } from './search.interface';
+import { SearchResultPage } from './search.dto';
 import { SearchService } from './search.service';
 
 describe('SearchController', () => {

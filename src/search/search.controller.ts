@@ -6,7 +6,7 @@ import {
   Query,
   UseInterceptors,
 } from '@nestjs/common';
-import { SearchResultPage } from './search.interface';
+import { SearchResultPage } from './search.dto';
 import { SearchService } from './search.service';
 
 @Controller('search')

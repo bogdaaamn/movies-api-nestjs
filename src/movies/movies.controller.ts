@@ -6,7 +6,7 @@ import {
   Param,
   UseInterceptors,
 } from '@nestjs/common';
-import { Movie } from './movies.interface';
+import { Movie } from './movies.dto';
 import { MoviesService } from './movies.service';
 
 @Controller('movies')

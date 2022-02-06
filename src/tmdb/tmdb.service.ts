@@ -1,7 +1,7 @@
 import { HttpService } from '@nestjs/axios';
 import { HttpException, Injectable, Logger } from '@nestjs/common';
 import { catchError, map, Observable, tap } from 'rxjs';
-import { TmdbMovie, TmdbSearchResult, TmdbVideos } from './tmdb.interface';
+import { TmdbMovie, TmdbSearchResult, TmdbVideos } from './tmdb.dto';
 
 @Injectable()
 export class TmdbService {

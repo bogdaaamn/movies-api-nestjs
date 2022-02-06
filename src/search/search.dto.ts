@@ -1,4 +1,4 @@
-interface SearchResult {
+class SearchResult {
   id: number;
   vote_average: number;
   poster_path: string;
@@ -6,7 +6,7 @@ interface SearchResult {
   title: string;
 }
 
-export interface SearchResultPage {
+export class SearchResultPage {
   page: number;
   results: SearchResult[];
   total_pages: number;
