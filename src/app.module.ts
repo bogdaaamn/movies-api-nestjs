@@ -1,4 +1,9 @@
-import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
+import {
+  CacheModule,
+  MiddlewareConsumer,
+  Module,
+  NestModule,
+} from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { MoviesController } from './movies/movies.controller';
 import { MoviesService } from './movies/movies.service';
@@ -9,7 +14,13 @@ import { SearchService } from './search/search.service';
 import { LoggerMiddleware } from './middlewares/logger.middleware';
 
 @Module({
-  imports: [ConfigModule.forRoot(), HttpModule],
+  imports: [
+    ConfigModule.forRoot(),
+    HttpModule,
+    CacheModule.register({
+      max: 100000,
+    }),
+  ],
   controllers: [MoviesController, SearchController],
   providers: [MoviesService, TmdbService, SearchService],
 })
