@@ -25,10 +25,25 @@ describe('AppController (e2e)', () => {
       poster_path: '/pB8BM7pdSp6B6Ih7QZ4DrQ3PmJK.jpg',
       release_date: '1999-10-15',
       runtime: 139,
+      trailer: 'https://www.youtube.com/watch?v=6JnN1DmbqoU',
     });
   });
 
   it('/movies (404)', () => {
     return request(app.getHttpServer()).get('/movies/asd').expect(404);
+  });
+
+  it('/search (200)', () => {
+    return request(app.getHttpServer()).get('/search?query=pulp').expect(200);
+  });
+
+  it('/search (422)', () => {
+    return request(app.getHttpServer()).get('/search?query=').expect(422);
+  });
+
+  it('/search (422)', () => {
+    return request(app.getHttpServer())
+      .get('/search?query=pulp&page=0')
+      .expect(422);
   });
 });

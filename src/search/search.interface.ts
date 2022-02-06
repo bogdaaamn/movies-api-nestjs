@@ -1,4 +1,4 @@
-interface SearchResult {
+export interface SearchResult {
   id: number;
   vote_average: number;
   poster_path: string;
