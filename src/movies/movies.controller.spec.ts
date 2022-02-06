@@ -5,13 +5,14 @@ import { TmdbService } from '../tmdb/tmdb.service';
 import { MoviesController } from './movies.controller';
 import { MoviesService } from './movies.service';
 import { Movie } from './movies.interface';
+import { CacheModule } from '@nestjs/common';
 
 describe('MoviesController', () => {
   let controller: MoviesController;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      imports: [ConfigModule.forRoot(), HttpModule],
+      imports: [ConfigModule.forRoot(), HttpModule, CacheModule.register()],
       controllers: [MoviesController],
       providers: [MoviesService, TmdbService],
     }).compile();

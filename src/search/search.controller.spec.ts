@@ -1,4 +1,5 @@
 import { HttpModule } from '@nestjs/axios';
+import { CacheModule } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { Test, TestingModule } from '@nestjs/testing';
 import { TmdbService } from '../tmdb/tmdb.service';
@@ -11,7 +12,7 @@ describe('SearchController', () => {
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      imports: [ConfigModule.forRoot(), HttpModule],
+      imports: [ConfigModule.forRoot(), HttpModule, CacheModule.register()],
       controllers: [SearchController],
       providers: [SearchService, TmdbService],
     }).compile();
