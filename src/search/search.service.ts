@@ -11,10 +11,12 @@ export class SearchService {
     query: string,
     page?: number,
   ): Promise<SearchResultPage> {
+    // Get TMDB search results
     const tmdbResultResponse = await lastValueFrom(
       this.tmdbService.getSearchResult(query, page),
     );
 
+    // Map the individual results to reduce the useless data
     const results = tmdbResultResponse.results.map((result) => {
       return {
         id: result.id,
@@ -25,6 +27,7 @@ export class SearchService {
       };
     });
 
+    // Return the mapped results
     return {
       page: tmdbResultResponse.page,
       results: results,
