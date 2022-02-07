@@ -361,9 +361,9 @@ Take note that the Heroku deployment will wait until the CI tests are passed. So
 
 ### Heroku
 
-Currently the project is hosted on Heroku under https://quiet-depths-21248.herokuapp.com/docs.
+You can deploy the project by connecting the GitHub project to a fresh new Heroku project, see [Enabling GitHub Integration](https://devcenter.heroku.com/articles/github-integration#enabling-github-integration). 
 
-You can deploy it by connecting the GitHub project to a fresh new Heroku project, see [Enabling GitHub Integration](https://devcenter.heroku.com/articles/github-integration#enabling-github-integration). You will have to manually setup the `TMDB_KEY` and `TMDB_URL` env variables into Heroku Dashboard (see [Configuration and Config Vars](https://devcenter.heroku.com/articles/config-vars#using-the-heroku-dashboard)) or run the CLI commands: 
+⚠️ You will have to manually setup the `TMDB_KEY` and `TMDB_URL` env variables into Heroku Dashboard (see [Configuration and Config Vars](https://devcenter.heroku.com/articles/config-vars#using-the-heroku-dashboard)) or run the CLI commands: 
 
 ```bash
 heroku config:set TMDB_KEY=key-here
@@ -372,7 +372,9 @@ heroku config:set TMDB_URL=https://api.themoviedb.org/3
 
 Or simply use the **Deploy to Heroku** button and complete the missing Config Vars on the screen:
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/BogDAAAMN/movies-api-nestjs/)
+
+Currently the project is hosted on Heroku under https://quiet-depths-21248.herokuapp.com/docs.
 
 ## License
 
