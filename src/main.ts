@@ -19,6 +19,14 @@ async function bootstrap() {
   const document = SwaggerModule.createDocument(app, swaggerConfig);
   SwaggerModule.setup('docs', app, document);
 
+  // Enable CORS and production origins
+  app.enableCors({
+    origin: [
+      'http://localhost:8080',
+      'https://affectionate-noether-30c383.netlify.app/',
+    ],
+  });
+
   // Set the Helmet modules
   app.use(helmet.expectCt());
   app.use(helmet.frameguard());
