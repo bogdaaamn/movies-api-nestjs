@@ -23,7 +23,7 @@ async function bootstrap() {
   app.enableCors({
     origin: [
       'http://localhost:8080',
-      'https://affectionate-noether-30c383.netlify.app/',
+      'https://affectionate-noether-30c383.netlify.app',
     ],
   });
 
