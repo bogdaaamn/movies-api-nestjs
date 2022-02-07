@@ -338,7 +338,14 @@ Running 10s test @ http://localhost:3000/movies/550
 
 ### Security
 
-hey
+This API uses [Helmet](https://helmetjs.github.io/) to set some of the headers that might be useful for this REST API.
+
+- `helmet.expectCt()` sets the `Expect-CT` header to avoid misused SSL certificates
+- `helmet.frameguard()` sets the `X-Frame-Options` to avoid click-jacking attacks or being misused in harmful embeds like `<iframe>`
+- `helmet.hidePoweredBy()` disables the `X-Powered-By` header to hide from attackers that this API runs on Express, and possibly save some payload size
+- `helmet.hsts()` sets the `Strict-Transport-Security` header to force the use of `HTTPS`
+- `helmet.noSniff()` sets the `X-Content-Type-Options` to prevent the misuse of `Content-Type` headers into MIME type sniffing or similar attacks
+- `helmet.permittedCrossDomainPolicies()` sets the `X-Permitted-Cross-Domain-Policies` header to block weird cross-domain clients (like Adobe)
 
 ## Deploy
 
