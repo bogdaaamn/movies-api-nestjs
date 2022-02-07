@@ -270,12 +270,9 @@ $ git clone https://github.com/BogDAAAMN/movies-api-nestjs/
 $ npm install
 ```
 
-Create and edit an `.env` file, as seen in [`.env.example`](/.env.example).
+⚠️ Create and edit an `.env` file, as seen in [`.env.example`](/.env.example).
 
-```
-TMDB_KEY=your-tmdb-priivate-key-here
-TMDB_URL=https://api.themoviedb.org/3
-```
+https://github.com/BogDAAAMN/movies-api-nestjs/blob/d8b6f7405e9ba5164bd46c2f0eb9b251c47379f5/.env.example#L1-L2
   
 You can get your `TMDB_KEY` API key by logging in to your [TMDB account](https://www.themoviedb.org/settings/account) and clicking the [API link](https://www.themoviedb.org/settings/api) of your account page. More details and screenshots on the [TMDB API Docs](https://developers.themoviedb.org/3/getting-started/introduction).
 
@@ -347,11 +344,17 @@ hey
 
 ### CI Workflow
 
-hey
+The GitHub Actions workflow in [.github/workflows/ci.yml](.github/workflows/ci.yml) runs the linter (`npm run lint`), the unit tests (`npm run test`), and the e2e tests (`npm run test:e2e`) for each push on the main branch. 
+
+⚠️ In order to allow the tests to run, they need the `TMDB_KEY` and `TMDB_URL` env variables. They are already set in the workflows (as seen below), but you need to make sure you set `TMDB_KEY` as a secret in your repository. See [Creating encrypted secrets for a repository](https://docs.github.com/en/actions/security-guides/encrypted-secrets#creating-encrypted-secrets-for-a-repository).
+
+https://github.com/BogDAAAMN/movies-api-nestjs/blob/d8b6f7405e9ba5164bd46c2f0eb9b251c47379f5/.github/workflows/ci.yml#L11-L12
+
+Take note that the Heroku deployment will wait until the CI tests are passed. So there will be no un-linted or un-tested code pushed to Heroku. If the tests are failing the deployment is stopped and you'll be notified. 
 
 ### Heroku
 
-hey
+hey  
 
 ## License
 
