@@ -267,6 +267,7 @@ GET /search?query=fight&page=1
 
 ```bash
 $ git clone https://github.com/BogDAAAMN/movies-api-nestjs/
+$ cd movies-api-nestjs
 $ npm install
 ```
 
@@ -366,8 +367,8 @@ You can deploy the project by connecting the GitHub project to a fresh new Herok
 ⚠️ You will have to manually setup the `TMDB_KEY` and `TMDB_URL` env variables into Heroku Dashboard (see [Configuration and Config Vars](https://devcenter.heroku.com/articles/config-vars#using-the-heroku-dashboard)) or run the CLI commands: 
 
 ```bash
-heroku config:set TMDB_KEY=key-here
-heroku config:set TMDB_URL=https://api.themoviedb.org/3
+$ heroku config:set TMDB_KEY=key-here
+$ heroku config:set TMDB_URL=https://api.themoviedb.org/3
 ```
 
 Or simply use the **Deploy to Heroku** button and complete the missing Config Vars on the screen:
