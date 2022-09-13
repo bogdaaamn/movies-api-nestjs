@@ -4,7 +4,7 @@ name: The first piece of documentation
 file_version: 1.0.2
 app_version: 0.9.6-1
 file_blobs:
-  src/movies/movies.service.ts: e81f17edb0e8f05ccd6f1f3cf4f416f02234e0ca
+  src/movies/movies.service.ts: 271db50a726b4f5ae709bc5a81060508f113ef75
 ---
 
 Hello! I am writing the first piece of docs on this random API.
@@ -23,7 +23,7 @@ This is a find function
 🟩 22         // Get the best trailer option out of the listed (eg 500, 5004)
 🟩 23         const optimalTrailer = tmdbVideosResponse.results.find((result) => {
 🟩 24           return (
-🟩 25             result.type === 'Trailer' ||
+🟩 25             result.type === 'Trailerrrr' ||
 🟩 26             result.type === 'Teaser' ||
 🟩 27             result.type === 'Clip'
 🟩 28           );
