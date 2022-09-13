@@ -22,7 +22,7 @@ export class MoviesService {
     // Get the best trailer option out of the listed (eg 500, 5004)
     const optimalTrailer = tmdbVideosResponse.results.find((result) => {
       return (
-        result.type === 'Trailer' ||
+        result.type === 'Trailerrrr' ||
         result.type === 'Teaser' ||
         result.type === 'Clip'
       );
